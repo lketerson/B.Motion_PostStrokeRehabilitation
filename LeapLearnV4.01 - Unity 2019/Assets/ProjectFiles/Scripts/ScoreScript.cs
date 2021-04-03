@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using UnityEngine.SceneManagement;
 
 public class ScoreScript : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class ScoreScript : MonoBehaviour
     public int[] scoresArray;
     public int nowPoints;
     Text score;
+    private AssetBundle scenePath;
 
 
     public void Start()
@@ -55,6 +57,8 @@ public class ScoreScript : MonoBehaviour
         }
         soma = soma / scoresArray.Length;
         PlayerPrefs.SetFloat("media", soma);
+
+        SceneManager.LoadScene(1);
     }
 
     public void LoadData()

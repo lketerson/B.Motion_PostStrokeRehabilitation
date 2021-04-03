@@ -2047,7 +2047,9 @@ GameObject:
   - component: {fileID: 730933930}
   - component: {fileID: 730933931}
   - component: {fileID: 730933932}
+  - component: {fileID: 730933935}
   - component: {fileID: 730933933}
+  - component: {fileID: 730933934}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2125,6 +2127,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b10da6014652e344aafba697ebb166e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &730933934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 730933929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e30c7fbcf4c49f48868f86f4f1eb77b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseUrl: https://docs.google.com/forms/u/0/d/e/1FAIpQLSd3sk8pCxKrB40ytLr-J9DQFcwERuWTijSrL4yi0yzN5k3RZQ/formResponse
+  cpfInputField: {fileID: 0}
+--- !u!114 &730933935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 730933929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e30c7fbcf4c49f48868f86f4f1eb77b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseUrl: https://docs.google.com/forms/u/0/d/e/1FAIpQLSd3sk8pCxKrB40ytLr-J9DQFcwERuWTijSrL4yi0yzN5k3RZQ/formResponse
+  cpfInputField: {fileID: 0}
 --- !u!1 &795244089
 GameObject:
   m_ObjectHideFlags: 0

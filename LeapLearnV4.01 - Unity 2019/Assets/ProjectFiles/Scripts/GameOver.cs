@@ -23,6 +23,6 @@ public class GameOver : MonoBehaviour
 
     public void LoadGraph()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 }

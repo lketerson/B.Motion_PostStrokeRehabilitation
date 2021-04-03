@@ -6,12 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/ProjectFiles/Scenes/LogIn.unity
-    guid: 0ca0ec76d020d77449e7c934eef9f36b
+    path: Assets/LeapMotion/Core/Examples/Capsule Hands (Desktop).unity
+    guid: e97e5c56326797c41be5a618cde4727a
+  - enabled: 1
+    path: Assets/ProjectFiles/Scenes/FormsSubmit.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
     path: Assets/ProjectFiles/Scenes/LineGraph.unity
     guid: d655fda9e81e84c23bcc3ef5c33227cf
   - enabled: 0
-    path: Assets/LeapMotion/Core/Examples/Capsule Hands (Desktop).unity
-    guid: e97e5c56326797c41be5a618cde4727a
+    path: Assets/ProjectFiles/Scenes/LogIn.unity
+    guid: 0ca0ec76d020d77449e7c934eef9f36b
   m_configObjects: {}
