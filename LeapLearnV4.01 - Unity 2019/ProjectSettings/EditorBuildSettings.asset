@@ -6,6 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/ProjectFiles/Scenes/RoleSelector.unity
+    guid: d0b1cecfea482284eae011ac94a6288c
+  - enabled: 1
+    path: Assets/ProjectFiles/Scenes/TerapeutaLogin.unity
+    guid: 859ede6595abba0478929fcc5a51e3f2
+  - enabled: 1
+    path: Assets/ProjectFiles/Scenes/TerapeutaMenu.unity
+    guid: 98cb4736300db4742870d163754673e1
+  - enabled: 1
     path: Assets/LeapMotion/Core/Examples/Capsule Hands (Desktop).unity
     guid: e97e5c56326797c41be5a618cde4727a
   - enabled: 1
