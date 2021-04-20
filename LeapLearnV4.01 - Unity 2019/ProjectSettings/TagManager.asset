@@ -10,6 +10,8 @@ TagManager:
   - Green
   - Red
   - Wall
+  - pointer
+  - Graph
   layers:
   - Default
   - TransparentFX

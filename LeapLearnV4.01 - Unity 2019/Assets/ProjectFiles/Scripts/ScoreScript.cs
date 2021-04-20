@@ -14,10 +14,11 @@ public class ScoreScript : MonoBehaviour
     public int nowPoints;
     Text score;
     private AssetBundle scenePath;
-
+    public static ScoreScript scoreScript;
 
     public void Start()
     {
+        scoreScript = this;
         timerScript = FindObjectOfType<TimerScript>();
         score = GetComponent<Text>();
         nowPoints = 0;
@@ -58,7 +59,7 @@ public class ScoreScript : MonoBehaviour
         soma = soma / scoresArray.Length;
         PlayerPrefs.SetFloat("media", soma);
 
-        SceneManager.LoadScene(1);
+        //SceneManager.LoadScene(1);
     }
 
     public void LoadData()

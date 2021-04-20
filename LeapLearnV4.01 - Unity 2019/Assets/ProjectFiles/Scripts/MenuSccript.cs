@@ -8,13 +8,13 @@ public class MenuSccript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void TerapeutaSelcionado()
@@ -24,7 +24,7 @@ public class MenuSccript : MonoBehaviour
 
     public void PacienteSelecionado()
     {
-        
+
     }
 
     public void VoltarRoleSelector()
@@ -36,5 +36,20 @@ public class MenuSccript : MonoBehaviour
     {
         Debug.Log("Quit!");
         Application.Quit();
+    }
+
+    public void PacienteMainMenu()
+    {
+        SceneManager.LoadScene(4);
+    }
+
+    public void GameBoxNBlocks()
+    {
+        SceneManager.LoadScene("GAME_BoxNBlocks");
+    }
+
+    public void GameLogicGates()
+    {
+        SceneManager.LoadScene("GAME_LogicGates");
     }
 }

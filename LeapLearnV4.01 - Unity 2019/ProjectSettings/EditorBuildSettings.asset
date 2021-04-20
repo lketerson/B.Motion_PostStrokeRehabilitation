@@ -6,24 +6,30 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/ProjectFiles/Scenes/UIScenes/UI_RoleSelector.unity
+    path: Assets/ProjectFiles/Scenes/UI_RoleSelector.unity
     guid: d0b1cecfea482284eae011ac94a6288c
   - enabled: 1
-    path: Assets/ProjectFiles/Scenes/UIScenes/UI_TerapeutaLogin.unity
+    path: Assets/ProjectFiles/Scenes/UI_TerapeutaLogin.unity
     guid: 859ede6595abba0478929fcc5a51e3f2
   - enabled: 1
-    path: Assets/ProjectFiles/Scenes/UIScenes/UI_TerapeutaMenu.unity
+    path: Assets/ProjectFiles/Scenes/UI_TerapeutaMenu.unity
     guid: 98cb4736300db4742870d163754673e1
   - enabled: 1
-    path: Assets/LeapMotion/Core/Examples/Capsule Hands (Desktop).unity
-    guid: e97e5c56326797c41be5a618cde4727a
-  - enabled: 1
-    path: Assets/ProjectFiles/Scenes/ObsoleteScenes/OBSOLETE_FormsSubmit.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
-    path: Assets/ProjectFiles/Scenes/GraphScenes/Graph_BoxNBlocks.unity
+    path: Assets/ProjectFiles/Scenes/LineGraph.unity
     guid: d655fda9e81e84c23bcc3ef5c33227cf
+  - enabled: 1
+    path: Assets/ProjectFiles/Scenes/UI_PacienteMainMenu.unity
+    guid: 42f3d6fb953129d43a537d5f922a6e83
+  - enabled: 1
+    path: Assets/ProjectFiles/Scenes/GAME_BoxNBlocks.unity
+    guid: f72a6d5eda5f17f46bc7cd1747b5c673
+  - enabled: 1
+    path: Assets/ProjectFiles/Scenes/GAME_LogicGates.unity
+    guid: 4654f0b19c1ba0942895f197326d43ab
   - enabled: 0
-    path: Assets/ProjectFiles/Scenes/ObsoleteScenes/OBSOLETE_LogIn.unity
+    path: Assets/ProjectFiles/Scenes/OBSOLETE/OBSOLETE_FormsSubmit.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 0
+    path: Assets/ProjectFiles/Scenes/OBSOLETE/OBSOLETE_LogIn.unity
     guid: 0ca0ec76d020d77449e7c934eef9f36b
   m_configObjects: {}

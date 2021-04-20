@@ -28,7 +28,7 @@ public class LineGraphManager : MonoBehaviour {
 	public List<GraphData> graphDataPlayer2 = new List<GraphData>();
 
 	private GraphData gd;
-	private float highestValue ;
+	private float highestValue = 1;
 
 	public Transform origin;
 
@@ -38,28 +38,21 @@ public class LineGraphManager : MonoBehaviour {
 	private float lrWidth = 0.1f;
 	private int dataGap = 0;
 
-    private void Awake()
-    {
-		//pontos = PlayerPrefsX.GetIntArray("arrayScore");
 
-	}
-    void Start(){
+	void Start(){
 
 
-		//Debug.Log(PlayerPrefs.GetFloat("media"));
-		
-		//pontos = PlayerPrefsX.GetIntArray("arrayScore");
+		Debug.Log(PlayerPrefs.GetFloat("media"));
+		pontos = PlayerPrefsX.GetIntArray("arrayScore");
 
-		for (int i = 0; i <100 ; i++)
+		for (int i = 0; i < pontos.Length; i++)
 		{
-    //        if (pontos[i] > 10)
-    //        {
-				//pontos[i] = 10;
-    //        }
+            if (pontos[i] > 10)
+            {
+				pontos[i] = 10;
+            }
 			GraphData gd = new GraphData();
-			//gd.marbles = pontos[i];
-			gd.marbles = Random.Range(0, 100);
-			Debug.Log("sec:"+i + " valor:" + gd.marbles);
+			gd.marbles = pontos[i];
 			graphDataPlayer1.Add(gd);
 			graphDataPlayer2.Add(gd);
 		}
@@ -87,7 +80,7 @@ public class LineGraphManager : MonoBehaviour {
 			// so that we get a value less than or equals to 1 and than we can multiply that
 			// number with Y axis range to fit in graph. 
 			// e.g. marbles = 90, highest = 90 so 90/90 = 1 and than 1*7 = 7 so for 90, Y = 7
-			gdlist[i].marbles = (gdlist[i].marbles/highestValue)*10f;
+			gdlist[i].marbles = (gdlist[i].marbles/highestValue)*1f;
 		}
 		if(playerNum == 1) 
 			StartCoroutine(BarGraphBlue(gdlist,gap));

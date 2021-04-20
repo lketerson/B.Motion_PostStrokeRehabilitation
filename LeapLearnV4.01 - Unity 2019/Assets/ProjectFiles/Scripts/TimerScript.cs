@@ -35,6 +35,8 @@ public class TimerScript : MonoBehaviour
     [HideInInspector] public float _timer;
     [HideInInspector] public float _restTime;
     [HideInInspector] public bool reseted;
+
+    GameObject graph;
     int _sesionsCount;
     float _startTime;
 
@@ -42,6 +44,7 @@ public class TimerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        graph = GameObject.FindGameObjectWithTag("Graph");
         cubeGame = FindObjectOfType<CubeGame>();
         score = FindObjectOfType<ScoreScript>();
         _handModels.SetActive(false);
@@ -49,6 +52,7 @@ public class TimerScript : MonoBehaviour
         _updateEnable = false;
         enabled = _updateEnable;
         _gameOverMenu.SetActive(false);
+        graph.SetActive(false);
     }
 
     // Update is called once per frame
@@ -129,7 +133,7 @@ public class TimerScript : MonoBehaviour
                 if(_sesionsCount == 0)
                 {
                     //Array to google forms
-                   
+                    ScoreScript.scoreScript.SaveData();
                     StopGame();
                 }
             }
@@ -143,6 +147,7 @@ public class TimerScript : MonoBehaviour
         _pointsDisplay.SetActive(false);
         _setTimerButton.SetActive(false);
         _gameOverMenu.SetActive(true);
+        graph.SetActive(true);
         _handModels.SetActive(false);
         _interactionManager.SetActive(false);
         _timer = 0;
