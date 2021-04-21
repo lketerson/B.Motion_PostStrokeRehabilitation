@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class LineGraphManager : MonoBehaviour {
 
@@ -35,28 +36,50 @@ public class LineGraphManager : MonoBehaviour {
 	public TextMesh player1name;
 	public TextMesh player2name;
 
+	bool rodou = true;
+
 	private float lrWidth = 0.1f;
 	private int dataGap = 0;
+	
+	public static LineGraphManager lineGraph;
 
+	void Start()
+	{
+		lineGraph = this;
+		Scene scene = SceneManager.GetActiveScene();
+		if (scene.name == "LineGraph")
+		{
+			Debug.Log("Initialized");
+			InitializeGraph();
+		}
 
-	void Start(){
-
-
-		Debug.Log(PlayerPrefs.GetFloat("media"));
+	}
+	public void ButtonStart()
+    {
+        if (rodou)
+        {
+			InitializeGraph();
+			rodou = false;
+        }
+    }
+	public void InitializeGraph()
+    {
+		Debug.Log("Graph Manager Start");
 		pontos = PlayerPrefsX.GetIntArray("arrayScore");
 
+		//Debug.Log(PlayerPrefs.GetFloat("media"));
 		for (int i = 0; i < pontos.Length; i++)
 		{
-            if (pontos[i] > 10)
-            {
+			if (pontos[i] > 10)
+			{
 				pontos[i] = 10;
-            }
+			}
 			GraphData gd = new GraphData();
 			gd.marbles = pontos[i];
 			graphDataPlayer1.Add(gd);
 			graphDataPlayer2.Add(gd);
 		}
-			// adding random data
+		// adding random data
 		//	int index = 120;
 		//for(int i = 0; i < index; i++){
 		//	GraphData gd = new GraphData();
@@ -73,6 +96,7 @@ public class LineGraphManager : MonoBehaviour {
 	
 	public void ShowData(GraphData[] gdlist,int playerNum,float gap) {
 
+		Debug.Log("Show Data");
 		// Adjusting value to fit in graph
 		for(int i = 0; i < gdlist.Length; i++)
 		{
@@ -100,7 +124,7 @@ public class LineGraphManager : MonoBehaviour {
 	}
 
 	public void ShowGraph(){
-
+		Debug.Log("ShowGraph");
 		ClearGraph();
 
 		if(graphDataPlayer1.Count >= 1 && graphDataPlayer2.Count >= 1){

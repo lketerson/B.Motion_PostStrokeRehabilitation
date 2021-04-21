@@ -14,13 +14,17 @@ public class ScoreScript : MonoBehaviour
     public int nowPoints;
     Text score;
     private AssetBundle scenePath;
-    public static ScoreScript scoreScript;
 
-    public void Start()
+    private void Awake()
     {
-        scoreScript = this;
         timerScript = FindObjectOfType<TimerScript>();
         score = GetComponent<Text>();
+        
+    }
+    public void Start()
+    {
+        
+        
         nowPoints = 0;
         
     }
@@ -51,7 +55,6 @@ public class ScoreScript : MonoBehaviour
         float soma=0;
         Array.Reverse(scoresArray, 0, scoresArray.Length);
         PlayerPrefsX.SetIntArray("arrayScore", scoresArray);
-        Debug.Log("S A V E D");
         for (int x = 0; x < scoresArray.Length; x++)
         {
             soma += scoresArray[x];
@@ -67,8 +70,8 @@ public class ScoreScript : MonoBehaviour
         float media;
         scoresArray = PlayerPrefsX.GetIntArray("arrayScore");
         media = PlayerPrefs.GetInt("media");
-        Debug.Log("L O A D E D");
-        Debug.Log("Media: "+ media);
+        //Debug.Log("L O A D E D");
+        //Debug.Log("Media: "+ media);
         
     }
 

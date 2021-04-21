@@ -13,12 +13,14 @@ public class TimerScript : MonoBehaviour
     [SerializeField] GameObject _inputTimerField;
     [SerializeField] GameObject _inputRestTimer;
     [SerializeField] GameObject _inputSesionQtd;
+    
 
     [SerializeField] GameObject _gameOverMenu;
     [SerializeField] GameObject _pointsDisplay;
     [SerializeField] GameObject _handModels;
     [SerializeField] GameObject _interactionManager;
 
+    bool executeOnce = false;
 
 
 
@@ -30,7 +32,7 @@ public class TimerScript : MonoBehaviour
     ScoreScript score;
     CubeGame cubeGame;
 
-
+ 
     [HideInInspector] public int _sesionsQtd;
     [HideInInspector] public float _timer;
     [HideInInspector] public float _restTime;
@@ -40,13 +42,17 @@ public class TimerScript : MonoBehaviour
     int _sesionsCount;
     float _startTime;
 
-    
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         graph = GameObject.FindGameObjectWithTag("Graph");
         cubeGame = FindObjectOfType<CubeGame>();
         score = FindObjectOfType<ScoreScript>();
+    }
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+        
         _handModels.SetActive(false);
         _isTimerBoxActive = true;
         _updateEnable = false;
@@ -75,16 +81,16 @@ public class TimerScript : MonoBehaviour
     }   
 
     public void SetTimer()  //Confirms the play time (UI > TimerWindowMenu > SetTimer ) and shows the time in the screen
-    {   
+    {
         
         _restTime = float.Parse(_inputRestTimer.GetComponent<Text>().text); //Input field Rest Time to variable
         _sesionsQtd = int.Parse(_inputSesionQtd.GetComponent<Text>().text);//Input field sesions qty to variable
-        _sesionsCount = _sesionsQtd;
         stringTimer = _inputTimerField.GetComponent<Text>().text;
         _timer = float.Parse(stringTimer);
+        score.SetScoreArray();
         _timerTextDisplay.GetComponent<Text>().text = _timer.ToString();
+        _sesionsCount = _sesionsQtd;
         _startTime = _timer; //Stores the starting play time 
-        score.SetScoreArray(); 
         EnableTimerBox();
     }
 
@@ -99,6 +105,16 @@ public class TimerScript : MonoBehaviour
     {
         if (_timer <= 0 && _sesionsCount == 0)
         {
+            if(executeOnce == false)
+            {
+                Debug.Log("SaveData");
+                score.SaveData();
+                score.LoadData();
+                LineGraphManager.lineGraph.InitializeGraph();
+                executeOnce = true;
+            }
+            
+            //UnityToForm.enviarForm.enviarInformação(); //Send information to google forms*************
             StopGame();            
         }
         else if(_timer <= 0 && _sesionsCount > 0)
@@ -108,19 +124,24 @@ public class TimerScript : MonoBehaviour
         }
     }
 
+   
+
 
     public void NextSesion() //When timer == 0 it disables the hands and start counting a resttimer
     {
         
+        //Debug.Log(_sesionsCount);
         if (_timer <= 0)
         {
-            score.scoresArray[_sesionsCount - 1 ] = score.nowPoints;
+            //Debug.Log("Passou");
+            score.scoresArray[_sesionsCount - 1] = score.nowPoints;
             reseted = true;
             _handModels.SetActive(false);
             _interactionManager.SetActive(false);
             
             if (_timer <= -_restTime)
             {
+                
                 reseted = false;
                 _handModels.SetActive(true);
                 _interactionManager.SetActive(true);
@@ -133,7 +154,7 @@ public class TimerScript : MonoBehaviour
                 if(_sesionsCount == 0)
                 {
                     //Array to google forms
-                    ScoreScript.scoreScript.SaveData();
+                    
                     StopGame();
                 }
             }
@@ -144,13 +165,14 @@ public class TimerScript : MonoBehaviour
 
     void StopGame() //Activates the game over menu
     {
+        
         _pointsDisplay.SetActive(false);
         _setTimerButton.SetActive(false);
         _gameOverMenu.SetActive(true);
-        graph.SetActive(true);
         _handModels.SetActive(false);
         _interactionManager.SetActive(false);
         _timer = 0;
+        graph.SetActive(true);
 
     }
 }

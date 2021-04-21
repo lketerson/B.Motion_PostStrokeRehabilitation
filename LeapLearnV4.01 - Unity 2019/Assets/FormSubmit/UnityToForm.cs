@@ -21,10 +21,11 @@ public class UnityToForm : MonoBehaviour
 
     private string cpf;
     private string data;
+    public static UnityToForm enviarForm;
 
     private void Start()
     {
-       
+        enviarForm = this;
         //validarCpf = GetComponent<ValidaCPF>();
     }
     public void enviarInformação()

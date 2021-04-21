@@ -12,6 +12,7 @@ TagManager:
   - Wall
   - pointer
   - Graph
+  - Score
   layers:
   - Default
   - TransparentFX
