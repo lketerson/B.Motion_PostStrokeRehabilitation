@@ -52,4 +52,9 @@ public class MenuSccript : MonoBehaviour
     {
         SceneManager.LoadScene("GAME_LogicGates");
     }
+
+    public void GraficoBnB()
+    {
+        SceneManager.LoadScene(3);
+    }
 }

@@ -13,6 +13,7 @@ TagManager:
   - pointer
   - Graph
   - Score
+  - bnbVideo
   layers:
   - Default
   - TransparentFX

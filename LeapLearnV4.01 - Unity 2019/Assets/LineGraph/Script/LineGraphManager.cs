@@ -70,11 +70,12 @@ public class LineGraphManager : MonoBehaviour {
 		//Debug.Log(PlayerPrefs.GetFloat("media"));
 		for (int i = 0; i < pontos.Length; i++)
 		{
-			if (pontos[i] > 10)
-			{
-				pontos[i] = 10;
-			}
-			GraphData gd = new GraphData();
+            if (pontos[i] > 10)
+            {
+                pontos[i] = 10;
+            }
+            GraphData gd = new GraphData();
+			
 			gd.marbles = pontos[i];
 			graphDataPlayer1.Add(gd);
 			graphDataPlayer2.Add(gd);
