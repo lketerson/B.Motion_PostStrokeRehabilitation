@@ -12,7 +12,7 @@ public class ButtonFade : MonoBehaviour
     {
 
         color = buttonColor.color;
-        Debug.Log("Over");
+        
     }
 
 

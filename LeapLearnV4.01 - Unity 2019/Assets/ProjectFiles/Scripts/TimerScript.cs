@@ -19,7 +19,9 @@ public class TimerScript : MonoBehaviour
     [SerializeField] GameObject _pointsDisplay;
     [SerializeField] GameObject _handModels;
     [SerializeField] GameObject _interactionManager;
-
+    [SerializeField] GameObject _confirmButton;
+    [SerializeField] GameObject _descansar;
+    //[SerializeField] GameObject initialTimer;
     bool executeOnce = false;
 
 
@@ -41,6 +43,8 @@ public class TimerScript : MonoBehaviour
     GameObject graph;
     int _sesionsCount;
     float _startTime;
+ 
+    
 
     private void Awake()
     {
@@ -51,22 +55,25 @@ public class TimerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-        
+
+        _confirmButton.active = true;
         _handModels.SetActive(false);
         _isTimerBoxActive = true;
         _updateEnable = false;
         enabled = _updateEnable;
         _gameOverMenu.SetActive(false);
         graph.SetActive(false);
+        _descansar.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         _timer -= Time.deltaTime;
         _timerTextDisplay.GetComponent<Text>().text = _timer.ToString("0");
         DisplayGameOverMenu();
+
     }
 
 
@@ -87,11 +94,21 @@ public class TimerScript : MonoBehaviour
         _sesionsQtd = int.Parse(_inputSesionQtd.GetComponent<Text>().text);//Input field sesions qty to variable
         stringTimer = _inputTimerField.GetComponent<Text>().text;
         _timer = float.Parse(stringTimer);
-        score.SetScoreArray();
+       
         _timerTextDisplay.GetComponent<Text>().text = _timer.ToString();
-        _sesionsCount = _sesionsQtd;
-        _startTime = _timer; //Stores the starting play time 
-        EnableTimerBox();
+
+        if (_restTime >0  && _sesionsQtd > 0 && _timer >0)
+        {
+            Debug.Log("nada nulo");
+            InitialTimer.initialTimer.time = 5f; //Reseta o contador do script initialtimer
+            InitialTimer.initialTimer.initialTimerDisplay.active = true;
+            _confirmButton.SetActive(false);
+            score.SetScoreArray();
+            _sesionsCount = _sesionsQtd;
+            _startTime = _timer; //Stores the starting play time 
+            Invoke("EnableTimerBox",5); //usar tempo em função do initialtimer.intialtimer.time (tempo para iniciar a partida) 
+            
+        }
     }
 
     public void CancelButton() //Close button of the time menu (UI > TimerWindowMenu > Image > Close)
@@ -133,6 +150,8 @@ public class TimerScript : MonoBehaviour
         //Debug.Log(_sesionsCount);
         if (_timer <= 0)
         {
+            
+            _descansar.SetActive(true);
             //Debug.Log("Passou");
             score.scoresArray[_sesionsCount - 1] = score.nowPoints;
             reseted = true;
@@ -141,7 +160,7 @@ public class TimerScript : MonoBehaviour
             
             if (_timer <= -_restTime)
             {
-                
+                _descansar.SetActive(false);
                 reseted = false;
                 _handModels.SetActive(true);
                 _interactionManager.SetActive(true);
@@ -165,7 +184,7 @@ public class TimerScript : MonoBehaviour
 
     void StopGame() //Activates the game over menu
     {
-        
+        InitialTimer.initialTimer.initialTimerDisplay.active = true;
         _pointsDisplay.SetActive(false);
         _setTimerButton.SetActive(false);
         _gameOverMenu.SetActive(true);
@@ -173,6 +192,7 @@ public class TimerScript : MonoBehaviour
         _interactionManager.SetActive(false);
         _timer = 0;
         graph.SetActive(true);
+        _confirmButton.active = true;
 
     }
 }

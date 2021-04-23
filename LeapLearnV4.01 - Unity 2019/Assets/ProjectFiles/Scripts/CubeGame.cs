@@ -9,7 +9,6 @@ public class CubeGame : MonoBehaviour
     public GameObject cube;
     public ScoreScript score;
     public SpawnCubes spawn;
-    TimerScript timerScript;
     [HideInInspector]
     public int cubePoints;
 
@@ -18,7 +17,7 @@ public class CubeGame : MonoBehaviour
     void Start()
     {
         
-        timerScript = FindObjectOfType<TimerScript>();
+
     }
 
     // Update is called once per frame
