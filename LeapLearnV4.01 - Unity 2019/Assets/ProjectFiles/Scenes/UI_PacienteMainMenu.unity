@@ -863,6 +863,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 567196416}
+        m_MethodName: PlayButtonSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &305383855
 GameObject:
   m_ObjectHideFlags: 0
@@ -1461,6 +1472,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 549873397}
   m_CullTransparentMesh: 0
+--- !u!114 &567196416 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5052781494694781539, guid: 665cf6c84f035174b8f6b83422b46f64,
+    type: 3}
+  m_PrefabInstance: {fileID: 1214194409}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98261bf4fedb7ef41bbc20f59e1aa018, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &567445973
 GameObject:
   m_ObjectHideFlags: 0
@@ -1917,6 +1940,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1307413997}
         m_MethodName: VoltarRoleSelector
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 567196416}
+        m_MethodName: PlayButtonSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2701,6 +2735,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 567196416}
+        m_MethodName: PlayButtonSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &976335068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3096,6 +3141,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 994663462}
         m_MethodName: PlayVideoRT
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 567196416}
+        m_MethodName: PlayButtonSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3683,6 +3739,75 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1214144027}
   m_CullTransparentMesh: 0
+--- !u!1001 &1214194409
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5052781494694781537, guid: 665cf6c84f035174b8f6b83422b46f64,
+        type: 3}
+      propertyPath: m_Name
+      value: AudioController
+      objectReference: {fileID: 0}
+    - target: {fileID: 5052781494694781540, guid: 665cf6c84f035174b8f6b83422b46f64,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5052781494694781540, guid: 665cf6c84f035174b8f6b83422b46f64,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 984.15106
+      objectReference: {fileID: 0}
+    - target: {fileID: 5052781494694781540, guid: 665cf6c84f035174b8f6b83422b46f64,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 445.6462
+      objectReference: {fileID: 0}
+    - target: {fileID: 5052781494694781540, guid: 665cf6c84f035174b8f6b83422b46f64,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -351.9375
+      objectReference: {fileID: 0}
+    - target: {fileID: 5052781494694781540, guid: 665cf6c84f035174b8f6b83422b46f64,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5052781494694781540, guid: 665cf6c84f035174b8f6b83422b46f64,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5052781494694781540, guid: 665cf6c84f035174b8f6b83422b46f64,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5052781494694781540, guid: 665cf6c84f035174b8f6b83422b46f64,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5052781494694781540, guid: 665cf6c84f035174b8f6b83422b46f64,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5052781494694781540, guid: 665cf6c84f035174b8f6b83422b46f64,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5052781494694781540, guid: 665cf6c84f035174b8f6b83422b46f64,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 665cf6c84f035174b8f6b83422b46f64, type: 3}
 --- !u!1 &1256427152
 GameObject:
   m_ObjectHideFlags: 0
@@ -4041,6 +4166,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 567196416}
+        m_MethodName: PlayButtonSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1304797495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4356,7 +4492,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1565099994}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 567196416}
+        m_MethodName: PlayButtonSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1590588521
 GameObject:
   m_ObjectHideFlags: 0
@@ -4740,6 +4887,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1307413997}
         m_MethodName: GraficoBnB
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 567196416}
+        m_MethodName: PlayButtonSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
