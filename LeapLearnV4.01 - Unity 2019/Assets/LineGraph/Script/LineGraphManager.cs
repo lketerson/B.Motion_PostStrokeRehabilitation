@@ -3,6 +3,8 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using System.Linq;
+using System;
 
 public class LineGraphManager : MonoBehaviour {
 
@@ -29,7 +31,7 @@ public class LineGraphManager : MonoBehaviour {
 	public List<GraphData> graphDataPlayer2 = new List<GraphData>();
 
 	private GraphData gd;
-	private float highestValue = 1;
+	private float highestValue;
 
 	public Transform origin;
 
@@ -40,7 +42,9 @@ public class LineGraphManager : MonoBehaviour {
 
 	private float lrWidth = 0.1f;
 	private int dataGap = 0;
-	
+
+	public List<float> mediaCarregada = new List<float>();
+	public int mediaCount;
 	public static LineGraphManager lineGraph;
 
 	void Start()
@@ -62,21 +66,47 @@ public class LineGraphManager : MonoBehaviour {
 			rodou = false;
         }
     }
+	public void LoadList()
+	{
+		mediaCarregada.Clear();
+		
+		for (int i = 0; i <PlayerPrefs.GetInt("mediaQTD")+1; i++)
+		{
+			float media = PlayerPrefs.GetFloat("Media_" + i);
+			mediaCarregada.Add(media);
+		}
+
+		GetMaxFloatValue(mediaCarregada);
+	}
+
+	public void GetMaxFloatValue(List<float> list)
+    {
+		highestValue = 0;
+        for (int i = 0; i < list.Count; i++)
+        {
+			if(list[i] > highestValue)
+            {
+				highestValue = list[i];
+            }
+        }
+		Debug.Log("HIGH: "+ highestValue);
+    }
 	public void InitializeGraph()
     {
+		
 		Debug.Log("Graph Manager Start");
-		pontos = PlayerPrefsX.GetIntArray("arrayScore");
+		LoadList();
+		//pontos = PlayerPrefsX.GetIntArray("arrayScore");
+		
+		
 
 		//Debug.Log(PlayerPrefs.GetFloat("media"));
-		for (int i = 0; i < pontos.Length; i++)
+		for (int i = 0; i < mediaCarregada.Count; i++)
 		{
-            if (pontos[i] > 10)
-            {
-                pontos[i] = 10;
-            }
+         
             GraphData gd = new GraphData();
 			
-			gd.marbles = pontos[i];
+			gd.marbles = mediaCarregada[i];
 			graphDataPlayer1.Add(gd);
 			graphDataPlayer2.Add(gd);
 		}
@@ -105,7 +135,7 @@ public class LineGraphManager : MonoBehaviour {
 			// so that we get a value less than or equals to 1 and than we can multiply that
 			// number with Y axis range to fit in graph. 
 			// e.g. marbles = 90, highest = 90 so 90/90 = 1 and than 1*7 = 7 so for 90, Y = 7
-			gdlist[i].marbles = (gdlist[i].marbles/highestValue)*1f;
+			gdlist[i].marbles = (gdlist[i].marbles/highestValue)*10f;
 		}
 		if(playerNum == 1) 
 			StartCoroutine(BarGraphBlue(gdlist,gap));

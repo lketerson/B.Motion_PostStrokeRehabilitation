@@ -24,6 +24,8 @@ public class TimerScript : MonoBehaviour
     //[SerializeField] GameObject initialTimer;
     bool executeOnce = false;
 
+    public int count;
+    public int mediaQTD;
 
 
     string stringTimer = "0";
@@ -64,6 +66,7 @@ public class TimerScript : MonoBehaviour
         _gameOverMenu.SetActive(false);
         graph.SetActive(false);
         _descansar.SetActive(false);
+        
     }
 
     // Update is called once per frame
@@ -124,10 +127,24 @@ public class TimerScript : MonoBehaviour
         {
             if(executeOnce == false)
             {
+
                 Debug.Log("SaveData");
+                if (PlayerPrefs.HasKey("mediaQTD"))
+                {
+                    count = PlayerPrefs.GetInt("mediaQTD");
+                    PlayerPrefs.SetInt("mediaQTD", count + 1);
+                }
+                else
+                {
+                    PlayerPrefs.SetInt("mediaQTD", 0);
+                }
+                
                 score.SaveData();
                 score.LoadData();
+                score.SaveList();
+                score.LoadList();
                 LineGraphManager.lineGraph.InitializeGraph();
+                Debug.Log(count);
                 executeOnce = true;
             }
             
