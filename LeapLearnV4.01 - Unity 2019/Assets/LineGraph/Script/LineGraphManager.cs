@@ -46,37 +46,46 @@ public class LineGraphManager : MonoBehaviour {
 	public List<float> mediaCarregada = new List<float>();
 	public int mediaCount;
 	public static LineGraphManager lineGraph;
+	Scene scene;
 
 	void Start()
 	{
 		lineGraph = this;
-		Scene scene = SceneManager.GetActiveScene();
+		scene = SceneManager.GetActiveScene();
 		if (scene.name == "LineGraph")
 		{
 			Debug.Log("Initialized");
-			InitializeGraph();
+			InitializeGraphBnb();
 		}
+		else if(scene.name == "GAME_LogicGates")
+        {
+
+        }
 
 	}
 	public void ButtonStart()
     {
         if (rodou)
         {
-			InitializeGraph();
+			InitializeGraphBnb();
 			rodou = false;
         }
     }
 	public void LoadList()
 	{
-		mediaCarregada.Clear();
-		
-		for (int i = 0; i <PlayerPrefs.GetInt("mediaQTD")+1; i++)
-		{
-			float media = PlayerPrefs.GetFloat("Media_" + i);
-			mediaCarregada.Add(media);
-		}
+		if(scene.name == "LineGraph"|| scene.name == "GAME_BoxNBlocks")
+        {
+			mediaCarregada.Clear();
 
-		GetMaxFloatValue(mediaCarregada);
+			for (int i = 0; i < PlayerPrefs.GetInt("mediaQTD") + 1; i++)
+			{
+				float media = PlayerPrefs.GetFloat("Media_" + i);
+				mediaCarregada.Add(media);
+			}
+
+			GetMaxFloatValue(mediaCarregada);
+		}
+		
 	}
 
 	public void GetMaxFloatValue(List<float> list)
@@ -91,7 +100,7 @@ public class LineGraphManager : MonoBehaviour {
         }
 		Debug.Log("HIGH: "+ highestValue);
     }
-	public void InitializeGraph()
+	public void InitializeGraphBnb()
     {
 		
 		Debug.Log("Graph Manager Start");

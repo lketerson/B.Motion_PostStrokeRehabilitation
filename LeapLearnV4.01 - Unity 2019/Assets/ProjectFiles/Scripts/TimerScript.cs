@@ -100,7 +100,7 @@ public class TimerScript : MonoBehaviour
        
         _timerTextDisplay.GetComponent<Text>().text = _timer.ToString();
 
-        if (_restTime >0  && _sesionsQtd > 0 && _timer >0)
+        if (_restTime >0  && _sesionsQtd > 0 && _timer >0 && UnityToForm.enviarForm.EnviarInformação())
         {
             Debug.Log("nada nulo");
             InitialTimer.initialTimer.time = 5f; //Reseta o contador do script initialtimer
@@ -143,7 +143,7 @@ public class TimerScript : MonoBehaviour
                 score.LoadData();
                 score.SaveList();
                 score.LoadList();
-                LineGraphManager.lineGraph.InitializeGraph();
+                LineGraphManager.lineGraph.InitializeGraphBnb();
                 Debug.Log(count);
                 executeOnce = true;
             }

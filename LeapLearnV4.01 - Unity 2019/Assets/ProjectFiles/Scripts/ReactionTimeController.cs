@@ -3,18 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DirDetector : MonoBehaviour
+public class ReactionTimeController : MonoBehaviour
 {
     [SerializeField]
     private Text gameText;
+    [SerializeField]
+    private ReactionTimeScoreController scoreController;
+    [SerializeField]
+    private GameObject sesionQtdInput;
+    [SerializeField]
+    private GameObject handModels;
+    [SerializeField]
+    private GameObject definicoesUI;
+    [SerializeField]
+    private GameObject gameOverUI;
+    [SerializeField]
+    private GameObject menuUI;
 
     Camera mainCamera;
 
-    bool trueDir, active, opened, canPosition, timerCanBeStoped, timerIsUp;
+    bool trueDir, active, opened, canPosition, timerCanBeStoped, timerIsUp, gameStarted;
 
     float randomInitializeTimer, startTime, reactionTime;
+    int sesionQtd, miniSesionQtd;
 
 
+    /*====================GETTERS AND SETTERS====================*/
     public bool TrueDir { get => trueDir; set => trueDir = value; }
     public bool Active { get => active; set => active = value; }
     public bool Opened { get => opened; set => opened = value; }
@@ -24,6 +38,11 @@ public class DirDetector : MonoBehaviour
     public float StartTime { get => startTime; set => startTime = value; }
     public bool TimerIsUp { get => timerIsUp; set => timerIsUp = value; }
     public float ReactionTime { get => reactionTime; set => reactionTime = value; }
+    public int SesionQtd { get => sesionQtd; set => sesionQtd = value; }
+    public bool GameStarted { get => gameStarted; set => gameStarted = value; }
+    public int MiniSesionQtd { get => miniSesionQtd; set => miniSesionQtd = value; }
+
+    /*===========================================================*/
 
 
 
@@ -31,14 +50,53 @@ public class DirDetector : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        menuUI.SetActive(true);
         ReactionTime = 0f;
         StartTime = 0f;
         mainCamera = Camera.main;
         TimerIsUp = false;
         TimerCanBeStoped = true;
         gameText.text = "Posicione para Começar";
+        handModels.SetActive(false);
+        GameStarted = false;
+        gameOverUI.SetActive(false);
+        definicoesUI.SetActive(true);
     }
 
+    public void StartGame()
+    {
+        SesionQtd =  int.Parse(sesionQtdInput.GetComponent<Text>().text);
+        if (UnityToForm.enviarForm.EnviarInformação()) 
+        {
+            scoreController.PontuacaoArray = new float[sesionQtd];
+            GameStarted = true;
+            MenuPrincipalAtivo(false);
+            MiniSesionQtd = scoreController.MiniPontuacaoArray.Length;
+        }
+        
+      
+    }
+
+    public void GameOver()
+    {
+            GameOverAtivo(true);
+        
+    }
+
+
+    public void GameOverAtivo(bool status)
+    {
+        menuUI.SetActive(status);
+        gameOverUI.SetActive(status);
+        handModels.SetActive(!status);
+    }
+
+    public void MenuPrincipalAtivo(bool status)
+    {
+        definicoesUI.SetActive(status);
+        menuUI.SetActive(status);
+        handModels.SetActive(!status);
+    }
     // Update is called once per frame
     void Update()
     {
@@ -55,7 +113,6 @@ public class DirDetector : MonoBehaviour
     {    
         TrueDir = true;
         TooEarly();
-
     }
 
     public void HandClosed()
@@ -71,7 +128,7 @@ public class DirDetector : MonoBehaviour
 
     public void StartCount()
     {
-        if (!TimerIsUp && !TrueDir && !Active)
+        if (!TimerIsUp && !TrueDir && !Active && GameStarted && SesionQtd > 0)
         {
             StartCoroutine("StartClock");
             gameText.text = "Espere o verde";
@@ -88,12 +145,22 @@ public class DirDetector : MonoBehaviour
         {
             if (TimerIsUp && TimerCanBeStoped && !Opened && TrueDir)
             {
+                Debug.Log("Ses: " + SesionQtd);
                 Active = false;
                 StopCoroutine("StartClock");
                 ReactionTime = Time.time - startTime ;
-                gameText.text = "Reaction time: \n" + ReactionTime.ToString("N3") + "sec\n" + "Posicione para começar novamente";
-                Debug.Log("Reaction time: \n" + ReactionTime.ToString("N3") + "sec\n" + "Posicione para começar novamente");
+                gameText.text = "Tempo de reação: \n" + ReactionTime.ToString("N3") + "sec\n" + "Posicione para começar novamente";
                 TimerIsUp = false;
+                Debug.Log("MiniCount: "+scoreController.MiniSesionCount);
+                
+                scoreController.MiniMediaAddScore(scoreController.MiniSesionCount, ReactionTime);
+                //scoreController.MiniSesionCount = scoreController.MiniSesionCount - 1;
+                //if (scoreController.MiniSesionCount < 0)
+                //{
+                //    scoreController.MiniSesionCount = 4;
+                //}
+
+
             }
         }
     }
@@ -125,6 +192,7 @@ public class DirDetector : MonoBehaviour
             if (timerIsUp && !TimerCanBeStoped)
             {
                 StopCoroutine("StartClock");
+                mainCamera.backgroundColor = new Color(1, 0, 0);
                 ReactionTime = 0f;
                 TimerIsUp = false;
                 TimerCanBeStoped = true;

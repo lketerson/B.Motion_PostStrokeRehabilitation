@@ -2294,7 +2294,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: DEFINIR TEMPO
+  m_Text: "D E F I N I \xC7 \xD5 E S"
 --- !u!222 &713840636
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2381,6 +2381,8 @@ MonoBehaviour:
   _interactionManager: {fileID: 1649547770}
   _confirmButton: {fileID: 1859414610}
   _descansar: {fileID: 1166791876}
+  count: 0
+  mediaQTD: 0
   _sesionsQtd: 0
   _timer: 0
   _restTime: 0
@@ -6498,6 +6500,8 @@ MonoBehaviour:
   points: 0
   scoresArray: 
   nowPoints: 0
+  mediaList: []
+  savedMediaCount: 0
 --- !u!1 &1776077979
 GameObject:
   m_ObjectHideFlags: 0
@@ -7259,7 +7263,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 1995154c513632f4cab13eeda7369797, type: 3}
-    m_FontSize: 23
+    m_FontSize: 17
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -7735,7 +7739,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 1995154c513632f4cab13eeda7369797, type: 3}
-    m_FontSize: 23
+    m_FontSize: 17
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
