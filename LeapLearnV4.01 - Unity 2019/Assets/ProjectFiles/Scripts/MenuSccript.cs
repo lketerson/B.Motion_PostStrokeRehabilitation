@@ -57,4 +57,9 @@ public class MenuSccript : MonoBehaviour
     {
         SceneManager.LoadScene(3);
     }
+    public void GraficoRT()
+    {
+        SceneManager.LoadScene(7);
+    }
+
 }

@@ -26,10 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/ProjectFiles/Scenes/GAME_LogicGates.unity
     guid: 4654f0b19c1ba0942895f197326d43ab
-  - enabled: 0
-    path: Assets/ProjectFiles/Scenes/OBSOLETE/OBSOLETE_FormsSubmit.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 0
-    path: Assets/ProjectFiles/Scenes/OBSOLETE/OBSOLETE_LogIn.unity
-    guid: 0ca0ec76d020d77449e7c934eef9f36b
+  - enabled: 1
+    path: Assets/ProjectFiles/Scenes/LineGraphRT.unity
+    guid: 058335795444e4b42a3b0311af3e4168
   m_configObjects: {}

@@ -57,10 +57,10 @@ public class LineGraphManager : MonoBehaviour {
 			Debug.Log("Initialized");
 			InitializeGraphBnb();
 		}
-		else if(scene.name == "GAME_LogicGates")
+		else if(scene.name == "LineGraphRT")
         {
-
-        }
+			InitializeGraphBnb();
+		}
 
 	}
 	public void ButtonStart()
@@ -82,10 +82,19 @@ public class LineGraphManager : MonoBehaviour {
 				float media = PlayerPrefs.GetFloat("Media_" + i);
 				mediaCarregada.Add(media);
 			}
-
-			GetMaxFloatValue(mediaCarregada);
 		}
-		
+		else if (scene.name == "LineGraphRT" || scene.name == "GAME_LogicGates")
+		{
+			mediaCarregada.Clear();
+
+			for (int i = 0; i < PlayerPrefs.GetInt("MediaQTD_RT") + 1; i++)
+			{
+				float media = PlayerPrefs.GetFloat("Media_RT" + i);
+				mediaCarregada.Add(media);
+			}
+		}
+		GetMaxFloatValue(mediaCarregada);
+
 	}
 
 	public void GetMaxFloatValue(List<float> list)

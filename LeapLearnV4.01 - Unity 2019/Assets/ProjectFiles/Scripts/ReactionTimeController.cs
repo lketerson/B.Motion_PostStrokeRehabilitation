@@ -19,6 +19,8 @@ public class ReactionTimeController : MonoBehaviour
     private GameObject gameOverUI;
     [SerializeField]
     private GameObject menuUI;
+    [SerializeField]
+    private Image background;
 
     Camera mainCamera;
 
@@ -63,10 +65,24 @@ public class ReactionTimeController : MonoBehaviour
         definicoesUI.SetActive(true);
     }
 
+    void Update()
+    {
+        TooEarly();
+        if (scoreController.lineGraph.active)
+        {
+            scoreController.LaunchGraph();
+        }
+        else
+        {
+            Debug.Log("Esperando");
+        }
+       
+    }
+
     public void StartGame()
     {
         SesionQtd =  int.Parse(sesionQtdInput.GetComponent<Text>().text);
-        if (UnityToForm.enviarForm.EnviarInformação()) 
+        if (UnityToForm.enviarForm.EnviarInformação() && SesionQtd > 0) //Valida CPF
         {
             scoreController.PontuacaoArray = new float[sesionQtd];
             GameStarted = true;
@@ -79,8 +95,7 @@ public class ReactionTimeController : MonoBehaviour
 
     public void GameOver()
     {
-            GameOverAtivo(true);
-        
+        GameOverAtivo(true);
     }
 
 
@@ -89,6 +104,8 @@ public class ReactionTimeController : MonoBehaviour
         menuUI.SetActive(status);
         gameOverUI.SetActive(status);
         handModels.SetActive(!status);
+        gameText.enabled = !status;
+        background.enabled = !status;
     }
 
     public void MenuPrincipalAtivo(bool status)
@@ -98,10 +115,7 @@ public class ReactionTimeController : MonoBehaviour
         handModels.SetActive(!status);
     }
     // Update is called once per frame
-    void Update()
-    {
-        TooEarly();
-    }
+   
 
 
     public void FalseDirection()

@@ -13,6 +13,13 @@ public class ReactionTimeScoreController : MonoBehaviour
     float[] pontuacaoArray;
     float[] miniPontuacaoArray;
     float pontuacao;
+    float avg;
+    int generalCount;
+    bool executeOnce = false;
+
+    List<float> mediaList = new List<float>();
+
+    public GameObject lineGraph;
 
     [SerializeField]
     ReactionTimeController rtController;
@@ -25,18 +32,22 @@ public class ReactionTimeScoreController : MonoBehaviour
     public float[] MiniPontuacaoArray { get => miniPontuacaoArray; set => miniPontuacaoArray = value; }
     public float MiniMediaRt { get => miniMediaRt; set => miniMediaRt = value; }
     public int MiniSesionCount { get => miniSesionCount; set => miniSesionCount = value; }
+    public float Avg { get => avg; set => avg = value; }
+    public int GeneralCount { get => generalCount; set => generalCount = value; }
 
     /*===========================================================*/
 
     // Start is called before the first frame update
     void Start()
     {
+        lineGraph.SetActive(false);
         //PontuacaoArray = new float [rtController.SesionQtd];
         MiniPontuacaoArray = new float[5];
         MiniSesionCount = 4;
         SesionCount = 0;
         Pontuacao = 0;
         MediaRt = 0;
+
     }
 
     // Update is called once per frame
@@ -51,12 +62,26 @@ public class ReactionTimeScoreController : MonoBehaviour
         }
 
         
-        
+
+
+
+
     }
 
+    public void LaunchGraph()
+    {
+        if (!executeOnce)
+        {
+            LineGraphManager.lineGraph.InitializeGraphBnb();
+            executeOnce = true;
+        }
+        
+        
+    }
     private void AddScore(int index)
     {
         PontuacaoArray[index] = MiniMediaRt;
+        
     }
 
     public void MiniMediaAddScore(int index, float pontuacao)
@@ -64,11 +89,11 @@ public class ReactionTimeScoreController : MonoBehaviour
         
         if (index >= 0)
         {
-            MiniPontuacaoArray[index] = pontuacao;
-            Debug.Log("Res" + index + ": " + MiniPontuacaoArray[index]);
-            
+            MiniPontuacaoArray[index] = pontuacao;           
         }
+
         MiniSesionCount = MiniSesionCount - 1;
+
         if (index <=0)
         {            
             MiniMediaRt = miniPontuacaoArray.Average();
@@ -84,16 +109,42 @@ public class ReactionTimeScoreController : MonoBehaviour
 
             if (SesionCount >= rtController.SesionQtd)
             {
-                Debug.Log("Array final___________");
-                for (int i = 0; i < PontuacaoArray.Length; i++)
+                Avg = pontuacaoArray.Average();
+        
+                if (PlayerPrefs.HasKey("MediaQTD_RT"))
                 {
-                    Debug.Log(PontuacaoArray[i]);
+                    GeneralCount = PlayerPrefs.GetInt("MediaQTD_RT");
+                    PlayerPrefs.SetInt("MediaQTD_RT", GeneralCount +1);
                 }
+                else
+                {
+                    PlayerPrefs.SetInt("MediaQTD_RT", 0);
+                }
+
                 rtController.GameOver();
+                lineGraph.SetActive(true);
+
+
+                SaveList();
+                LoadList();
+
             }
         }
+    }
+    public void SaveList()
+    {
+        PlayerPrefs.SetFloat("Media_RT" + PlayerPrefs.GetInt("MediaQTD_RT"), Avg);
+    }
 
-        
-        
+    public void LoadList()
+    {
+        mediaList.Clear();
+        GeneralCount = PlayerPrefs.GetInt("MediaQTD_RT");
+        for (int i = 0; i < PlayerPrefs.GetInt("MediaQTD_RT") + 1; i++)
+        {
+            float media = PlayerPrefs.GetFloat("Media_RT" + i);
+            mediaList.Add(media);
+            Debug.Log("Media_" + i + ": " + mediaList[i]);
+        }
     }
 }

@@ -32,7 +32,7 @@ public class UnityToForm : MonoBehaviour
         enviarForm = this;
         //validarCpf = GetComponent<ValidaCPF>();
     }
-    public bool EnviarInformação()
+    public bool EnviarInformação() //ValidaCPF
     {
         bool validation;
         Cpf = cpfInputField.GetComponent<InputField>().text;
