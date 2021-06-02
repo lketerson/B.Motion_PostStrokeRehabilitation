@@ -2330,8 +2330,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e30c7fbcf4c49f48868f86f4f1eb77b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseUrlBnb: https://docs.google.com/forms/u/0/d/e/1FAIpQLSd3sk8pCxKrB40ytLr-J9DQFcwERuWTijSrL4yi0yzN5k3RZQ/formResponse
-  baseUrlRt: https://docs.google.com/forms/u/0/d/e/1FAIpQLSd3sk8pCxKrB40ytLr-J9DQFcwERuWTijSrL4yi0yzN5k3RZQ/formResponse
+  baseUrl: https://docs.google.com/forms/u/0/d/e/1FAIpQLSd3sk8pCxKrB40ytLr-J9DQFcwERuWTijSrL4yi0yzN5k3RZQ/formResponse
+  melhorPontuacaoBnb: entry.652627999
+  cpfBnb: entry.1940352720
+  pontuacaobnb: entry.1109842368
+  melhorPontuacaoRt: entry.753007139
+  cpfRt: entry.1939702615
+  pontuacaoRt: entry.376356826
   cpfInputField: {fileID: 1421362946}
 --- !u!114 &730933936
 MonoBehaviour:
@@ -8207,6 +8212,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LineGraph
+      objectReference: {fileID: 0}
+    - target: {fileID: 7537074810510564126, guid: 1d842585abeebaa4f89cbd25c8518d7a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 10.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8658752774866833084, guid: 1d842585abeebaa4f89cbd25c8518d7a,
+        type: 3}
+      propertyPath: m_Text
+      value: Caixas e Blocos
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d842585abeebaa4f89cbd25c8518d7a, type: 3}

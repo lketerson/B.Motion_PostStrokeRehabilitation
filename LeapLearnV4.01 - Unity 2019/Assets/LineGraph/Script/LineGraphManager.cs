@@ -32,6 +32,7 @@ public class LineGraphManager : MonoBehaviour {
 
 	private GraphData gd;
 	private float highestValue;
+	private float lowestValue;
 
 	public Transform origin;
 
@@ -48,7 +49,10 @@ public class LineGraphManager : MonoBehaviour {
 	public static LineGraphManager lineGraph;
 	Scene scene;
 
-	void Start()
+    public float HighestValue { get => highestValue; private set => highestValue = value; }
+    public float LowestValue { get => lowestValue; private set => lowestValue = value; }
+
+    void Start()
 	{
 		lineGraph = this;
 		scene = SceneManager.GetActiveScene();
@@ -82,6 +86,7 @@ public class LineGraphManager : MonoBehaviour {
 				float media = PlayerPrefs.GetFloat("Media_" + i);
 				mediaCarregada.Add(media);
 			}
+			
 		}
 		else if (scene.name == "LineGraphRT" || scene.name == "GAME_LogicGates")
 		{
@@ -92,23 +97,40 @@ public class LineGraphManager : MonoBehaviour {
 				float media = PlayerPrefs.GetFloat("Media_RT" + i);
 				mediaCarregada.Add(media);
 			}
+			lowestValue = mediaCarregada.Min();
+			Debug.Log("MIN:"+mediaCarregada.Min());
+			//GetMinFloatValue(mediaCarregada);
 		}
-		GetMaxFloatValue(mediaCarregada);
+		highestValue = mediaCarregada.Max();
+		Debug.Log("MAXN:" + mediaCarregada.Min());
+		
 
 	}
 
-	public void GetMaxFloatValue(List<float> list)
+	public void GetMinFloatValue(List<float> list)
     {
-		highestValue = 0;
+		LowestValue = 0;
         for (int i = 0; i < list.Count; i++)
         {
-			if(list[i] > highestValue)
+			if(list[i] < LowestValue)
             {
-				highestValue = list[i];
+				LowestValue = list[i];
             }
         }
-		Debug.Log("HIGH: "+ highestValue);
+		Debug.Log("LOW: "+ LowestValue);
     }
+	public void GetMaxFloatValue(List<float> list)
+	{
+		HighestValue = 0;
+		for (int i = 0; i < list.Count; i++)
+		{
+			if (list[i] > HighestValue)
+			{
+				HighestValue = list[i];
+			}
+		}
+		Debug.Log("HIGH: " + HighestValue);
+	}
 	public void InitializeGraphBnb()
     {
 		
@@ -153,7 +175,7 @@ public class LineGraphManager : MonoBehaviour {
 			// so that we get a value less than or equals to 1 and than we can multiply that
 			// number with Y axis range to fit in graph. 
 			// e.g. marbles = 90, highest = 90 so 90/90 = 1 and than 1*7 = 7 so for 90, Y = 7
-			gdlist[i].marbles = (gdlist[i].marbles/highestValue)*10f;
+			gdlist[i].marbles = (gdlist[i].marbles/HighestValue)*10f;
 		}
 		if(playerNum == 1) 
 			StartCoroutine(BarGraphBlue(gdlist,gap));

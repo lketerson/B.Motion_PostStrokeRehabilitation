@@ -145,10 +145,12 @@ public class TimerScript : MonoBehaviour
                 score.LoadList();
                 LineGraphManager.lineGraph.InitializeGraphBnb();
                 Debug.Log(count);
+
+                PostInfo();
                 executeOnce = true;
             }
             
-            //UnityToForm.enviarForm.enviarInformação(); //Send information to google forms*************
+            
             StopGame();            
         }
         else if(_timer <= 0 && _sesionsCount > 0)
@@ -159,7 +161,10 @@ public class TimerScript : MonoBehaviour
     }
 
    
-
+    private void PostInfo()
+    {
+        StartCoroutine(UnityToForm.enviarForm.PostBnb(UnityToForm.enviarForm.Cpf));
+    }
 
     public void NextSesion() //When timer == 0 it disables the hands and start counting a resttimer
     {
@@ -194,8 +199,7 @@ public class TimerScript : MonoBehaviour
                     StopGame();
                 }
             }
-        }
-            
+        }        
      }
 
 

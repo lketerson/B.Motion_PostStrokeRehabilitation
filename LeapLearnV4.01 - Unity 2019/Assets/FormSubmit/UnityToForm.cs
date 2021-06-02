@@ -7,28 +7,37 @@ using UnityEngine.SceneManagement;
 
 public class UnityToForm : MonoBehaviour
 {
+    //[SerializeField]
+    //private string baseUrlBnb = Box and blocks link"https://docs.google.com/forms/u/0/d/e/1FAIpQLSd3sk8pCxKrB40ytLr-J9DQFcwERuWTijSrL4yi0yzN5k3RZQ/formResponse";
     [SerializeField]
-    private string baseUrlBnb = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSd3sk8pCxKrB40ytLr-J9DQFcwERuWTijSrL4yi0yzN5k3RZQ/formResponse";
-    [SerializeField]
-    private string baseUrlRt = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSd3sk8pCxKrB40ytLr-J9DQFcwERuWTijSrL4yi0yzN5k3RZQ/formResponse";
+    private string baseUrl; //=     Raction time link "https://docs.google.com/forms/u/0/d/e/1FAIpQLSfySsWGmU-e102vWKHof5MDRu-mf_pvtsd2iQxV0CqM8MbyZw/formResponse";
 
-    public static string[] formsPaths = { "entry.1109842368", "entry.125980134", "entry.659438613", "entry.677929917","entry.1855757196", 
-                                            "entry.1608729364", "entry.335316690", "entry.589880081", "entry.60263458", "entry.1813927506"};
-    
+
+    //____________Box And Blocks Form______________________________
+    public string melhorPontuacaoBnb = "entry.652627999";
+    public string cpfBnb = "entry.1940352720";
+    public string pontuacaobnb = "entry.1109842368";
+
+    //___________Reaction time Form________________________________
+    public string melhorPontuacaoRt = "entry.753007139";
+    public string cpfRt = "entry.1939702615";
+    public string pontuacaoRt = "entry.376356826";
+
+
     public GameObject cpfInputField;
 
-    private int[] pointsToForms;
-    private float mediaToForms;
+
+ 
     //public ValidaCPF validarCpf;
 
     private string cpf;
-    private string data;
     public static UnityToForm enviarForm;
 
     public string Cpf { get => cpf; set => cpf = value; }
 
     private void Start()
     {
+
         enviarForm = this;
         //validarCpf = GetComponent<ValidaCPF>();
     }
@@ -36,16 +45,13 @@ public class UnityToForm : MonoBehaviour
     {
         bool validation;
         Cpf = cpfInputField.GetComponent<InputField>().text;
-        data = System.DateTime.Now.ToString("MM/dd/yyyy");
         if (Validacoes.ValidaCPF(Cpf))
         {
-            Debug.Log("True");
-            StartCoroutine(Post(Cpf, data));
+            //StartCoroutine(Post(Cpf, data));
             validation = true;
         }
         else
         {
-            Debug.Log("False");
             validation = false;
         }
 
@@ -53,43 +59,43 @@ public class UnityToForm : MonoBehaviour
         
     }
 
-    public IEnumerator Post(string cpf, string data)
+    public IEnumerator PostBnb(string cpf)
     {
-        if(SceneManager.GetActiveScene().name == "GAME_BoxNBlocks")
-        {
-            pointsToForms = PlayerPrefsX.GetIntArray("arrayScore");
-            mediaToForms = PlayerPrefs.GetFloat("media");
-            WWWForm form = new WWWForm();
-            form.AddField("entry.1940352720", cpf);                         //cpf
-
-            for (int i = 0; i < formsPaths.Length; i++)
-            {
-                Debug.Log("Submiting");
-                form.AddField(formsPaths[i], pointsToForms[i]);
-            }
-
-
-            /* form.AddField("entry.1109842368", Random.Range(0,10));          //=======================
-             form.AddField("entry.125980134", Random.Range(0,10));
-             form.AddField("entry.659438613", Random.Range(0, 10));
-             form.AddField("entry.677929917", Random.Range(0, 10));
-             form.AddField("entry.1855757196", Random.Range(0, 10));         //SECÇOES DE 1 A 10
-             form.AddField("entry.1608729364", Random.Range(0, 10));
-             form.AddField("entry.335316690", Random.Range(0, 10));
-             form.AddField("entry.589880081", Random.Range(0, 10));
-             form.AddField("entry.60263458", Random.Range(0, 10));
-             form.AddField("entry.1813927506", Random.Range(0, 10));   */      //=======================
-            form.AddField("entry.277554918", (int)mediaToForms);          //Media
-            byte[] rawData = form.data;
-            WWW www = new WWW(baseUrlBnb, rawData);
-            yield return www;
-        }
-
-        if(SceneManager.GetActiveScene().name == "GAME_LogicGates")
-        {
-            //L O G I C A  D E  E N V I O  D E  P O N T U A Ç Ã O
-        }
+        LineGraphManager.lineGraph.LoadList();
         
+        if (SceneManager.GetActiveScene().name == "GAME_BoxNBlocks")
+        {
+            WWWForm form = new WWWForm();
+            /*_________PREENCHENDO OS CAMPOS_________*/
+            form.AddField(cpfBnb, cpf); //CPF
+            form.AddField(pontuacaobnb, PlayerPrefs.GetFloat("Media_" + "" + PlayerPrefs.GetInt("mediaQTD")).ToString()); //PONTUACAO
+            form.AddField(melhorPontuacaoBnb, LineGraphManager.lineGraph.HighestValue.ToString());  //Melhor pontuacao
+
+            byte[] rawData = form.data;
+            WWW www = new WWW(baseUrl, rawData);
+            yield return www;
+
+            Debug.Log("ENVIANDO INFORMAÇÃO BNB");
+        }
+    }
+
+    public IEnumerator PostRt(string cpf)
+    {
+        LineGraphManager.lineGraph.LoadList();
+        if (SceneManager.GetActiveScene().name == "GAME_LogicGates")
+        {
+            WWWForm form = new WWWForm();
+            /*_________PREENCHENDO OS CAMPOS_________*/
+            form.AddField(cpfRt, cpf);
+            form.AddField(pontuacaoRt, PlayerPrefs.GetFloat("Media_RT" + "" + PlayerPrefs.GetInt("MediaQTD_RT")).ToString());
+            form.AddField(melhorPontuacaoRt, LineGraphManager.lineGraph.LowestValue.ToString());
+
+            byte[] rawData = form.data;
+            WWW www = new WWW(baseUrl, rawData);
+            yield return www;
+
+            Debug.Log("ENVIANDO INFORMAÇÃO RT");
+        }
     }
 
 }

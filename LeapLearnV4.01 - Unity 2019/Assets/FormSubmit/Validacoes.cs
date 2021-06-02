@@ -37,8 +37,6 @@ using UnityEngine;
 
                 return false;
 
-            if (valor == "12312312312")
-                return true;
 
 
             int[] numeros = new int[11];

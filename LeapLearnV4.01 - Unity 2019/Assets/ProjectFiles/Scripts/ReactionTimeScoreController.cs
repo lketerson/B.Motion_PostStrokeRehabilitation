@@ -127,9 +127,14 @@ public class ReactionTimeScoreController : MonoBehaviour
 
                 SaveList();
                 LoadList();
+                PostInfo();
 
             }
         }
+    }
+    private void PostInfo()
+    {
+        StartCoroutine(UnityToForm.enviarForm.PostRt(UnityToForm.enviarForm.Cpf));
     }
     public void SaveList()
     {

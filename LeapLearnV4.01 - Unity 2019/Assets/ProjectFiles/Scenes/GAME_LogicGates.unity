@@ -1936,7 +1936,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 989a80f6957c77a41882ab930ee59525, type: 3}
     m_FontSize: 69
     m_FontStyle: 0
     m_BestFit: 0
@@ -2374,8 +2374,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e30c7fbcf4c49f48868f86f4f1eb77b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseUrlBnb: https://docs.google.com/forms/u/0/d/e/1FAIpQLSd3sk8pCxKrB40ytLr-J9DQFcwERuWTijSrL4yi0yzN5k3RZQ/formResponse
-  baseUrlRt: https://docs.google.com/forms/u/0/d/e/1FAIpQLSd3sk8pCxKrB40ytLr-J9DQFcwERuWTijSrL4yi0yzN5k3RZQ/formResponse
+  baseUrl: https://docs.google.com/forms/u/0/d/e/1FAIpQLSfySsWGmU-e102vWKHof5MDRu-mf_pvtsd2iQxV0CqM8MbyZw/formResponse
+  melhorPontuacaoBnb: entry.652627999
+  cpfBnb: entry.1940352720
+  pontuacaobnb: entry.1109842368
+  melhorPontuacaoRt: entry.753007139
+  cpfRt: entry.1939702615
+  pontuacaoRt: entry.376356826
   cpfInputField: {fileID: 1042014270}
 --- !u!1 &1172128432
 GameObject:
@@ -3938,6 +3943,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LineGraph VariantBNB
+      objectReference: {fileID: 0}
+    - target: {fileID: 7537074810510564126, guid: 1d842585abeebaa4f89cbd25c8518d7a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 11.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 8658752774866833084, guid: 1d842585abeebaa4f89cbd25c8518d7a,
+        type: 3}
+      propertyPath: m_Text
+      value: "Tempo de Rea\xE7\xE3o"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d842585abeebaa4f89cbd25c8518d7a, type: 3}
