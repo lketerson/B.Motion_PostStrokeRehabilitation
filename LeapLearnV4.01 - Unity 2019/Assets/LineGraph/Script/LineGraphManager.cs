@@ -101,6 +101,7 @@ public class LineGraphManager : MonoBehaviour {
 			Debug.Log("MIN:"+mediaCarregada.Min());
 			//GetMinFloatValue(mediaCarregada);
 		}
+		lowestValue = mediaCarregada.Min();
 		highestValue = mediaCarregada.Max();
 		Debug.Log("MAXN:" + mediaCarregada.Min());
 		

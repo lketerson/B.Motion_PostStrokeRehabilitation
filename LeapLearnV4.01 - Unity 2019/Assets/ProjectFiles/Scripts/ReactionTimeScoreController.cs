@@ -60,12 +60,6 @@ public class ReactionTimeScoreController : MonoBehaviour
                 Debug.Log(PontuacaoArray[i]);
             }
         }
-
-        
-
-
-
-
     }
 
     public void LaunchGraph()

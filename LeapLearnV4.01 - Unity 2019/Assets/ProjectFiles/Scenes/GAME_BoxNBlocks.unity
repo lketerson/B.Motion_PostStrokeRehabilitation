@@ -6304,7 +6304,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Tempo da partida
+  m_Text: "Tempo da sess\xE3o"
 --- !u!222 &1708928886
 CanvasRenderer:
   m_ObjectHideFlags: 0

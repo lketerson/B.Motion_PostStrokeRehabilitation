@@ -422,7 +422,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: PROTO NAME
+  m_text: B. MOTION
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a38046c741f6e9b448f805c78fefcdcc, type: 2}
   m_sharedMaterial: {fileID: -6112053445911566666, guid: a38046c741f6e9b448f805c78fefcdcc,
@@ -492,7 +492,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: -1.1258545, w: 0.973999}
   m_textInfo:
     textComponent: {fileID: 290537773}
-    characterCount: 10
+    characterCount: 9
     spriteCount: 0
     spaceCount: 1
     wordCount: 2
