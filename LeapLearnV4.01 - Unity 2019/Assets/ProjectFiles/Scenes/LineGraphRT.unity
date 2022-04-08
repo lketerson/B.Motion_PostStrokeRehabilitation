@@ -2131,7 +2131,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ' Raction Time'
+  m_text: Box and Blocks
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a38046c741f6e9b448f805c78fefcdcc, type: 2}
   m_sharedMaterial: {fileID: -6112053445911566666, guid: a38046c741f6e9b448f805c78fefcdcc,
@@ -2201,7 +2201,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 854347238}
-    characterCount: 13
+    characterCount: 14
     spriteCount: 0
     spaceCount: 2
     wordCount: 3
@@ -2759,8 +2759,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2018891718}
-        m_MethodName: ButtonStart
+      - m_Target: {fileID: 2114308375}
+        m_MethodName: GraficoBnB
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3265,7 +3265,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 71.6, y: 0}
+  m_AnchoredPosition: {x: 77.9, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1622059259
@@ -3287,7 +3287,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: ee80fe8fcf770e44d970a225a3a90bc6, type: 3}
+  m_Texture: {fileID: 2800000, guid: 412deaef0f1f0c941bf8ba2fa4e53d36, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0

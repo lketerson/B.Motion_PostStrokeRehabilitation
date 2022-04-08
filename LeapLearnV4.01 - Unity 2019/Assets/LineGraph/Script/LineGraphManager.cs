@@ -80,6 +80,7 @@ public class LineGraphManager : MonoBehaviour {
 		mediaCarregada.Clear();
 		if (scene.name == "LineGraph"|| scene.name == "GAME_BoxNBlocks")
         {
+			//Se o grafico não se comportar como devido some +1 
 			for (int i = 0; i <= PlayerPrefs.GetInt("mediaQTD"); i++)
 			{
 				float media = PlayerPrefs.GetFloat("Media_" + i);
