@@ -77,11 +77,10 @@ public class LineGraphManager : MonoBehaviour {
     }
 	public void LoadList()
 	{
-		if(scene.name == "LineGraph"|| scene.name == "GAME_BoxNBlocks")
+		mediaCarregada.Clear();
+		if (scene.name == "LineGraph"|| scene.name == "GAME_BoxNBlocks")
         {
-			mediaCarregada.Clear();
-
-			for (int i = 0; i < PlayerPrefs.GetInt("mediaQTD") + 1; i++)
+			for (int i = 0; i <= PlayerPrefs.GetInt("mediaQTD"); i++)
 			{
 				float media = PlayerPrefs.GetFloat("Media_" + i);
 				mediaCarregada.Add(media);
@@ -90,9 +89,7 @@ public class LineGraphManager : MonoBehaviour {
 		}
 		else if (scene.name == "LineGraphRT" || scene.name == "GAME_LogicGates")
 		{
-			mediaCarregada.Clear();
-
-			for (int i = 0; i < PlayerPrefs.GetInt("MediaQTD_RT") + 1; i++)
+			for (int i = 0; i <= PlayerPrefs.GetInt("MediaQTD_RT"); i++)
 			{
 				float media = PlayerPrefs.GetFloat("Media_RT" + i);
 				mediaCarregada.Add(media);
@@ -132,6 +129,7 @@ public class LineGraphManager : MonoBehaviour {
 		}
 		Debug.Log("HIGH: " + HighestValue);
 	}
+
 	public void InitializeGraphBnb()
     {
 		
@@ -287,7 +285,7 @@ public class LineGraphManager : MonoBehaviour {
 		int dataCount = 0;
 		bool flag = false;
 		Vector3 startpoint = new Vector3((origin.position.x+xIncrement),(origin.position.y+gd[dataCount].marbles),(origin.position.z));//origin.position;//
-
+		
 		while(dataCount < gd.Length)
 		{
 			
