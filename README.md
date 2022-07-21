@@ -7,7 +7,9 @@ B.Motion is an application developed as a proposal to help in the rehabilitation
 
 To be able to use B.Motion with the Leap Motion Controller, the software must be installed. You can download it from this link:
 
-https://drive.google.com/file/d/1R4-UZlZezal0wL2lGQGIXVIpdATBbrZ5/view?usp=sharing
+<a href = "https://drive.google.com/file/d/1NjuJ8L5aSA3vCuQxZm5lKbK6YIbRR0H0/view?usp=sharing"><img src="https://img.shields.io/badge/-DOWLOAD-green" target="_blank"></a>
+
+You will find the Build of the project inside the .zip file.
 
 It is currently not easy to find it online.
 
