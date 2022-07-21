@@ -5,7 +5,7 @@ B.Motion is an application developed as a proposal to help in the rehabilitation
 
 ## Leap Motion Controller Software Installation
 
-To be able to use B.Motion with Leap Motion, the software must be installed. You can download it from this link:
+To be able to use B.Motion with the Leap Motion Controller, the software must be installed. You can download it from this link:
 
 https://drive.google.com/file/d/1R4-UZlZezal0wL2lGQGIXVIpdATBbrZ5/view?usp=sharing
 
@@ -56,6 +56,7 @@ Each correctly placed block will add one point, shown in the lower right corner,
 While the rest message is on screen the player will have virtual hands disabled, until the time shown in the lower corner is equal to the rest time assigned in the settings screen.
 
 Once the message disappears, the next session will start with the configured session time, this will be repeated until the number of sessions is satisfied. Once all the rouds are completed, the Game Over menu will be shown along with the patient's performance graph.
+
 <p align="center">
   <img width="700" src="https://i.ibb.co/vqTMhdv/image.png">
 </p>
@@ -69,7 +70,49 @@ The graph is calculated from the average of each complete session. It is an evol
   <img width="700" src="https://i.ibb.co/tLh6JbW/image.png">
 </p>
 
+## Reaction Time Game
+In these game there are two fields that must be filled.
 
+"Quantidade de Sessões" - For how many rounds the player will perform the exercises.
+
+"CPF" - Brazilian ID, for those who are not residents of Brazil, you can use the following link to generate a CPF for testing: https://www.4devs.com.br/gerador_de_cpf
+
+Each round consists of 5 sub-rounds. The score is calculated from the average score of the sub-rounds.
+
+<p align="center">
+  <img width="700" src="https://i.ibb.co/9ypVNgz/image.png">
+</p>
+
+Once the settings are confirmed, the patient will go to the next screen, where it will be necessary for the patient to position the affected hand with the palm up so that the game can start.
+
+<p align="center">
+  <img width="700" src="https://i.ibb.co/CmYRKH9/image.png">
+</p>
+
+When the hand is correctly positioned, open and palm up, the patient will receive a blue screen indicating that is ready to start. At this time the patient should wait for the green color.
+
+<p align="center">
+  <img width="700" src="https://i.ibb.co/8xWVkxG/image.png">
+</p>
+
+If the patient rotates the palm downwards and clenches the fist during the green screen, his score will be counted from the time it took to perform the movement.
+
+<p align="center">
+  <img width="700" src="https://i.ibb.co/Q9WrW1j/image.png">
+</p>
+
+If any movement is made before the green screen, a "too early" message will pop up indicating that the move was made too soon, and the hand should return to the initial position again.
+
+<p align="center">
+  <img width="700" src="https://i.ibb.co/cJcmvQx/image.png">
+</p>
+
+After completing all the rounds you will be sent to the game over screen, and you will be able to see a graph of the same performance as in the game Box and Blocks.
+
+## Full Article
+https://repositorio.ifgoiano.edu.br/handle/prefix/2550
 
 ## License
-[MIT](https://choosealicense.com/licenses/mit/)
+ <footer>
+      &copy; 2021 Lucas Keterson
+  </footer>
